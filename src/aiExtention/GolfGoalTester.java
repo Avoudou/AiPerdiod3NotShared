@@ -6,7 +6,16 @@ import com.badlogic.gdx.math.Vector3;
 import components.Position;
 
 public class GolfGoalTester extends GoalAchived<GolfState> {
-	private final int diameterOfTarget = 15;
+	private int diameterOfTarget = 40;
+	
+	
+	public GolfGoalTester() {
+		
+	}
+	public GolfGoalTester(int diameter) {
+		this.diameterOfTarget=diameter;
+		
+	}
 
 	@Override
 	public boolean test(GolfState aState) {

@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector3;
 
 public class ActionGeneatorV2 {
 
-	private final int maxForceLength = 10;
+	private final int maxForceLength = 20;
 
 	private Vector3 firstTryDir;
 

@@ -42,18 +42,18 @@ public class TestTrim {
 
 	
 		Entity target = new Entity();
-		target.add(new Position(100, 0, 0));
+		target.add(new Position(1000, 0, 0));
 		
 		
 		GolfSearchData searchPerformer= new GolfSearchData(ball, target);
 		
-		TreeNode<GolfState, GolfAction> solutionNode= searchPerformer.greedySolution();
+		TreeNode<GolfState, GolfAction> solutionNode= searchPerformer.aStarSolution();
 		
 		displaySolution(engine, deltaTime, ball, solutionNode);
 
 	}
 	
-	
+	/**runs and displays the possition of the ball to the  game-fake engine*/
 	private static void displaySolution(Engine engine, float deltaTime,
 			Ball ball, TreeNode<GolfState, GolfAction> solutionNode) {
 		TreeNode<GolfState, GolfAction> tempNode = solutionNode;

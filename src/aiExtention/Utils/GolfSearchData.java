@@ -3,6 +3,7 @@ package aiExtention.Utils;
 import java.util.Arrays;
 import java.util.List;
 
+import searchTree.AStar;
 import searchTree.GoalAchived;
 import searchTree.NodeEvaluator;
 import searchTree.NodeGenerator;
@@ -19,6 +20,7 @@ import aiExtention.GolfEvaluator;
 import aiExtention.GolfGenerator;
 import aiExtention.GolfGoalTester;
 import aiExtention.GolfState;
+import aiExtention.GolfStateComparator;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
@@ -67,7 +69,10 @@ public class GolfSearchData {
 		this.evaluator= new AStarEvaluator();
 		this.generator= new GolfGenerator(aiEngine, evaluator);
 		this.goalTester=new GolfGoalTester();
-		return rootNode;
+		AStar<GolfState, GolfAction> astar = new AStar<GolfState, GolfAction>(
+				 generator, goalTester,new GolfStateComparator(20000, 20000, 30));
+		System.out.println("RUN aStar");
+		return astar.runAStar(rootNode);
 		
 	}
 	public TreeNode<GolfState, GolfAction> greedySolution(){
@@ -76,7 +81,7 @@ public class GolfSearchData {
 		this.goalTester=new GolfGoalTester();
 		TreeOperator<GolfState, GolfAction> treeOperator = new TreeOperator<GolfState, GolfAction>(
 				rootNode, generator, goalTester);
-		System.out.println("RUN");
+		System.out.println("RUN greedy");
 		return treeOperator.runSearch();
 		
 	}
