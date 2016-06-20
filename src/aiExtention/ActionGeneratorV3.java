@@ -15,12 +15,15 @@ public class ActionGeneratorV3 {
 
 	private int strengthItteration = 1;
 	private int zAxisItterations = 1;
+	
+	private int sightDegrees=180;
 
 	private ArrayList<Vector3> forceData = new ArrayList<Vector3>();
 
 
 	public ActionGeneratorV3(Vector3 directionBias, int noOfNodes) {
 		firstTryDir= directionBias;
+		maxNumberOfRep=noOfNodes;
 		generateForceData();
 
 	}
@@ -45,9 +48,10 @@ public class ActionGeneratorV3 {
 			Vector3 referenceVector = new Vector3(firstTryDir.x,firstTryDir.y,0);
 			referenceVector.scl(referenceVector.len());
 			
+			referenceVector.rotate(zAxis, -sightDegrees/2);
 
 			for (int j = 0; j < planXYnumber; j++) {
-				referenceVector.rotate(zAxis, 360 / planXYnumber);
+				referenceVector.rotate(zAxis,  sightDegrees/planXYnumber);
 				generateForceIncrement(referenceVector);
 
 			}
