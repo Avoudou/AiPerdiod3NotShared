@@ -47,7 +47,7 @@ public class TestTrim {
 		
 		GolfSearchData searchPerformer= new GolfSearchData(ball, target);
 		
-		TreeNode<GolfState, GolfAction> solutionNode= searchPerformer.aStarSolution();
+		TreeNode<GolfState, GolfAction> solutionNode= searchPerformer.greedySolution();
 		
 		displaySolution(engine, deltaTime, ball, solutionNode);
 

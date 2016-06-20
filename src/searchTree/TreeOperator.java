@@ -25,7 +25,7 @@ public class TreeOperator<E extends SearchState, Action extends AbstractAction<E
 	public TreeNode<E, Action> runSearch() {
 		int depth = 0;
 		System.out.println("Running search");
-		while (!goalTester.test(searchTree.getListOfNodes(depth).peek().getState()) && depth < 10) {
+		while (!goalTester.test(searchTree.getListOfNodes(depth).peek().getState()) && depth < 1000) {
 			expandDeapth(depth);
 			depth++;
 			// System.out.println(depth + " " + searchTree.getListOfNodes(depth).peek().getNodeDeapth());
